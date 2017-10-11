@@ -1,0 +1,13 @@
+---
+- name: create servers
+  hosts: localhost
+  gather_facts: False
+
+  tasks:
+    - name: Include cluster vars
+      include_vars:
+        file: ../cluster/config.yaml
+    - name: Cancel by tag
+      sl_vm:
+        state: absent
+        tags: icp
